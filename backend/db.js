@@ -1,11 +1,12 @@
-const mongoose=require('mongoose')
-const mongoURI='mongodb://127.0.0.1:27017'
+const mongoose = require("mongoose");
+const mongoURI = "mongodb://127.0.0.1:27017";
 
-const connectToMongo=()=>{
-    mongoose.connect(mongoURI,{
-        'dbName':'Instagram'
+const connectToMongo = () => {
+  mongoose
+    .connect(mongoURI, {
+      dbName: "Instagram",
     })
-    .then(()=>console.log("Connected To Mongo SuccessFully"))
-}
+    .then(() => console.log("Connected To Mongo SuccessFully"));
+};
 
-module.exports=connectToMongo
+module.exports = connectToMongo;

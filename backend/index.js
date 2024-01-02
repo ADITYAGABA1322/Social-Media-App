@@ -1,3 +1,4 @@
+require('dotenv').config()
 // initialize express framework
 const express = require('express')
 // create an express application
@@ -6,10 +7,10 @@ const app = express()
 app.get('/', (req, res) => {
   res.send('Hello world')
 })
-
+console.log("get",process.env.MONGO_URI)
 const connectToMongo=require('./db')
 const cors=require('cors')
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 //midlewares
 app.use(cors())
 // to increae limit of payload
