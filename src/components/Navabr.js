@@ -102,7 +102,7 @@ const Modal=({open,close,data})=>{
          { !data ?<div className="user-info">No user found</div>:
          <>
            <div className="user-info">
-        <img onClick={()=>{navigate(data.name);close.current.click();}} style={{cursor:'pointer'}}  src={"https://media.istockphoto.com/id/1131164548/vector/avatar-5.jpg?s=612x612&w=0&k=20&c=CK49ShLJwDxE4kiroCR42kimTuuhvuo2FH5y_6aSgEo="} alt="User Avatar" />
+        <img onClick={()=>{navigate(data.name);close.current.click();}} style={{cursor:'pointer'}}  src={data.avatar?data.avatar:"https://media.istockphoto.com/id/1131164548/vector/avatar-5.jpg?s=612x612&w=0&k=20&c=CK49ShLJwDxE4kiroCR42kimTuuhvuo2FH5y_6aSgEo="} alt="User Avatar" />
           <div onClick={()=>{navigate(data.name);close.current.click();}} style={{border:'1px black solid',borderRadius:'20px',padding:'20px',cursor:'pointer'}}>{data.name}</div>
         </div>
          </>
