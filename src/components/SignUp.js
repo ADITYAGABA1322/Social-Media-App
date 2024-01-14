@@ -19,11 +19,12 @@ export default function SignUp() {
     if (json.authtoken) {
       //Save the auth token and redirect
       localStorage.setItem("token", json.authtoken);
+      localStorage.setItem("name", name);
       alert("Registered Success");
       Navigate("/");
     } else {
       alert(
-        "User with email already exists or password is not of min 5 length"
+        "User with email/username already exists or password is not of min 5 length"
       );
     }
   };
@@ -117,7 +118,7 @@ export default function SignUp() {
                 zIndex: 1,
               }}
             >
-              Name
+              userName
             </label>
 
             <input

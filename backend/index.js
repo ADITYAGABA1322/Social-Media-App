@@ -20,6 +20,7 @@ app.use(express.json());
 
 app.use('/api/auth',require('./routes/auth'))
 app.use('/api/posts',require('./routes/posts'))
+app.use('/api/follow',require('./routes/follow'))
 
 app.listen(4000,()=>{
     console.log('iNotebook listening on 4000')

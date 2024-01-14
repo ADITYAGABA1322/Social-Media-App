@@ -18,13 +18,13 @@ export default function Login() {
     if (json.success) {
       //Save the auth token and redirect
       localStorage.setItem("token", json.authtoken);
-      localStorage.setItem("name", email);
+      localStorage.setItem("name", json.username);
       alert("Loggedin Success");
       Navigate("/");
       setEmail("");
       setPassword("");
     } else {
-      alert("Invalid Cedential");
+      alert("Invalid Credential");
     }
   };
   const [showPassword, setShowPassword] = useState(false);

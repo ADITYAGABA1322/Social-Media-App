@@ -19,7 +19,7 @@ const PostState = (props) => {
     setposts(json);
   };
   //Add a post
-  const addpost = async (title, description, reaction,image) => {
+  const addpost = async (title, image) => {
     //Backend Update
     await fetch(`${host}/api/posts/addpost`, {
       method: "POST",
@@ -27,7 +27,7 @@ const PostState = (props) => {
         "Content-Type": "application/json",
         "auth-token": localStorage.getItem("token"),
       },
-      body: JSON.stringify({ title, description,base64:image , reaction,}), // body data type must match "Content-Type" header
+      body: JSON.stringify({ title, base64:image  }), // body data type must match "Content-Type" header
     });
 
     //Frontend Update
@@ -50,7 +50,7 @@ const PostState = (props) => {
     setposts(newpost);
   };
   //Edit a post
-  const editpost = async (id, title, description, reaction) => {
+  const editpost = async (id, title) => {
     //Backend Update
     await fetch(`${host}/api/posts/updatepost/${id}`, {
       method: "PUT",
@@ -58,7 +58,33 @@ const PostState = (props) => {
         "Content-Type": "application/json",
         "auth-token": localStorage.getItem("token"),
       },
-      body: JSON.stringify({ title, description, reaction }), // body data type must match "Content-Type" header
+      body: JSON.stringify({ title}), // body data type must match "Content-Type" header
+    });
+    //Frontend Update
+    getposts();
+  };
+  const addComment = async (id, comment) => {
+    //Backend Update
+    await fetch(`${host}/api/posts//addcomment/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+      body: JSON.stringify({comment}), // body data type must match "Content-Type" header
+    });
+    //Frontend Update
+    getposts();
+  };
+  const editLike = async (id, reaction) => {
+    //Backend Update
+    await fetch(`${host}/api/posts//addreaction/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+      body: JSON.stringify({ reaction}), // body data type must match "Content-Type" header
     });
     //Frontend Update
     getposts();
@@ -66,7 +92,7 @@ const PostState = (props) => {
 
   return (
     <PostContext.Provider
-      value={{ posts, addpost, deletepost, editpost, getposts }}
+      value={{ posts, addpost, deletepost, editpost, getposts,addComment,editLike }}
     >
       {props.children}
     </PostContext.Provider>

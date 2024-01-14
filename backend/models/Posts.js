@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const PostsSchema = new mongoose.Schema({
   user:{
     type:mongoose.Schema.Types.ObjectId,
@@ -11,15 +10,17 @@ const PostsSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    required: true,
   },
   image: {
     type: String,
   },
   reaction: {
-    type: String,
-      default:"General"
+    type: Number,
+    default:0
   },
+  comment:[
+   {type:String}
+  ],
   date: {
     type: Date,
    default:Date.now

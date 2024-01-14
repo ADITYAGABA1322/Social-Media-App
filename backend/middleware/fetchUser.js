@@ -3,17 +3,21 @@ const JWT_SECRET = "VanshSecret";
 const fetchUser=(req,res,next)=>{
     const token=req.header('auth-token');
     if(!token){
-        res.status(401).send({errror:"Please authenticate using a valid token"})
+        // res.status(401).send({errror:"Please authenticate using a valid token"})
+        next();
     }
    else{
+    
     try{
         const string=jwt.verify(token,JWT_SECRET)
         req.user=string.user;
         next();
     }
     catch(error){
-        res.status(401).send({errror:"Please authenticate using a valid token"})
+        // res.status(401).send({errror:"Please authenticate using a valid token"})
+          next();
     }
+
    }
 }
 module.exports=fetchUser
